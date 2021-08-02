@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/native';
 import { Card, Paragraph, Title, Avatar } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export const RestaurantInfoCard = ({ resturant = {} }) => {
   const {
@@ -17,7 +17,7 @@ export const RestaurantInfoCard = ({ resturant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
 
   return (
-    <Card style={styles.card} key={name}>
+    <RestaurantCard elevation={5}>
       <ResutarntCardCover source={{ uri: photos[0] }} />
       <Info>
         <CardTitle>{name}</CardTitle>
@@ -32,23 +32,28 @@ export const RestaurantInfoCard = ({ resturant = {} }) => {
 
         <CardAddress>{address}</CardAddress>
       </Info>
-    </Card>
+    </RestaurantCard>
   );
 };
 
-const styles = StyleSheet.create({
-  card: {
-    shadowColor: '#000',
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-  },
-});
+// const styles = StyleSheet.create({
+//   card: {
+//     shadowColor: '#000',
+//     shadowRadius: 12,
+//     shadowOffset: { width: 0, height: 2 },
+//     shadowOpacity: 0.2,
+//     marginBottom: 16,
+//   },
+// });
+
+const RestaurantCard = styled(Card)`
+  margin-bottom: ${(props) => props.theme.space[3]};
+`;
 
 const CardTitle = styled(Title)`
   color: ${(props) => props.theme.colors.ui.primary};
   font-family: ${(props) => props.theme.fonts.heading};
-  font-size: ${(props) => props.theme.fontSizes.body};
+  font-size: ${(props) => props.theme.fontSizes.title};
   padding-top: ${(props) => props.theme.space[2]};
 `;
 
@@ -65,10 +70,11 @@ const CardAddress = styled(Paragraph)`
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
 
-const RatingIcon = styled(Avatar.Icon)`
-  background-color: ${(props) => props.theme.colors.ui.orange};
-  margin-right: ${(props) => props.theme.space[1]};
-`;
+const RatingIcon = styled(MaterialCommunityIcons).attrs({
+  name: 'star',
+  size: 26,
+  color: '#fb8500',
+})``;
 
 const RatingView = styled.View`
   flex-direction: row;
