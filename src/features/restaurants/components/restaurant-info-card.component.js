@@ -9,28 +9,28 @@ export const RestaurantInfoCard = ({ resturant = {} }) => {
     photos = [
       'https://images.unsplash.com/photo-1502301103665-0b95cc738daf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
     ],
-    address = '100 some random street',
+    vicinity = '100 some random street',
     isOpenNow = true,
     rating = 4,
+    placeId,
   } = resturant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-
   return (
     <RestaurantCard elevation={5}>
-      <ResutarntCardCover source={{ uri: photos[0] }} />
+      <ResutarntCardCover ket={name} source={{ uri: photos[0] }} />
       <Info>
         <CardTitle>{name}</CardTitle>
         <RatingView>
-          {ratingArray.map(() => (
-            <RatingIcon size={24} icon="star" />
+          {ratingArray.map((_, i) => (
+            <RatingIcon key={`star-${placeId}-${i}`} size={24} icon="star" />
           ))}
           <LockView>
             <OpenIcon size={24} icon={`${isOpenNow ? 'lock-open' : 'lock'}`} />
           </LockView>
         </RatingView>
 
-        <CardAddress>{address}</CardAddress>
+        <CardAddress>{vicinity}</CardAddress>
       </Info>
     </RestaurantCard>
   );

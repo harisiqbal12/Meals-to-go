@@ -15,6 +15,8 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { RestaurantsScreen } from './src/features/restaurants/screens/restaurants.screens';
 import { theme } from './src/infastructure/theme';
 import { SafeArea } from './src/components/utility/safe-area.component';
+import { RestaurantContextProvider } from './src/services/restaurants/restaurants.context';
+import { LocationContextProvider } from './src/services/locations/location.context';
 
 const Settings = () => {
   return (
@@ -57,48 +59,56 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <NavigationContainer>
-          <TabNavigator>
-            <Tab.Screen
-              name="Restaurants"
-              component={RestaurantsScreen}
-              options={{
-                tabBarLabel: 'Restaurants',
-                tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons
-                    name="silverware-fork-knife"
-                    color={color}
-                    size={26}
-                  />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Maps"
-              component={Maps}
-              options={{
-                tabBarLabel: 'Maps',
-                tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons
-                    name="map-search-outline"
-                    color={color}
-                    size={26}
-                  />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Settings"
-              component={Settings}
-              options={{
-                tabBarLabel: 'Settings',
-                tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="cog" color={color} size={26} />
-                ),
-              }}
-            />
-          </TabNavigator>
-        </NavigationContainer>
+        <LocationContextProvider>
+          <RestaurantContextProvider>
+            <NavigationContainer>
+              <TabNavigator>
+                <Tab.Screen
+                  name="Restaurants"
+                  component={RestaurantsScreen}
+                  options={{
+                    tabBarLabel: 'Restaurants',
+                    tabBarIcon: ({ color }) => (
+                      <MaterialCommunityIcons
+                        name="silverware-fork-knife"
+                        color={color}
+                        size={26}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Maps"
+                  component={Maps}
+                  options={{
+                    tabBarLabel: 'Maps',
+                    tabBarIcon: ({ color }) => (
+                      <MaterialCommunityIcons
+                        name="map-search-outline"
+                        color={color}
+                        size={26}
+                      />
+                    ),
+                  }}
+                />
+                <Tab.Screen
+                  name="Settings"
+                  component={Settings}
+                  options={{
+                    tabBarLabel: 'Settings',
+                    tabBarIcon: ({ color }) => (
+                      <MaterialCommunityIcons
+                        name="cog"
+                        color={color}
+                        size={26}
+                      />
+                    ),
+                  }}
+                />
+              </TabNavigator>
+            </NavigationContainer>
+          </RestaurantContextProvider>
+        </LocationContextProvider>
       </ThemeProvider>
       <ExpoStatusBar style="auto" />
     </>
