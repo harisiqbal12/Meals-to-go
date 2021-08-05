@@ -22,7 +22,6 @@ export const LocationContextProvider = ({ children }) => {
         await locationRequest(searchkeyWord.toLowerCase())
       );
       setLocation(res);
-      console.log(res);
       setIsLoading(false);
     } catch (err) {
       setError(err);
@@ -39,6 +38,7 @@ export const LocationContextProvider = ({ children }) => {
         location,
         search: onSearch,
         keyword,
+        setKeyword,
       }}
     >
       {children}
