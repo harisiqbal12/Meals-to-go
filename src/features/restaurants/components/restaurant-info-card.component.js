@@ -18,7 +18,7 @@ export const RestaurantInfoCard = ({ resturant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard elevation={5}>
-      <ResutarntCardCover ket={name} source={{ uri: photos[0] }} />
+      <ResutarntCardCover key={name} source={{ uri: photos[0] }} />
       <Info>
         <CardTitle>{name}</CardTitle>
         <RatingView>

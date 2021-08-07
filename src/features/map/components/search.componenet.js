@@ -7,9 +7,9 @@ import { LocationContext } from '../../../services/locations/location.context';
 const SearchBarView = styled.View`
   padding: ${(props) => props.theme.space[3]};
   position: absolute;
-  z-index: 999;
   width: 100%;
   top: 20px;
+  z-index: 1;
 `;
 
 export const SearchBar = () => {
