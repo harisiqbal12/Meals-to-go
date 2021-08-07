@@ -24,8 +24,10 @@ const CompactWebView = styled(WebView)`
   height: 100px;
 `;
 
-export const MapCallout = ({ restaurant }) => {
-  const ValidImage = Platform.OS === 'android' ? CompactWebView : ImageView;
+export const CompactRestaurant = ({ restaurant, isMap }) => {
+  const ValidImage =
+    Platform.OS === 'android' && isMap ? CompactWebView : ImageView;
+  console.log(restaurant);
 
   return (
     <Item>

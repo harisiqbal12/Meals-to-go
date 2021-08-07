@@ -17,7 +17,7 @@ const SearchBarView = styled(View)`
   padding: ${(props) => props.theme.space[3]};
 `;
 
-export const Search = () => {
+export const Search = ({ isFavouriteToggled, onFavouriteToggled }) => {
   const { keyword, search, setKeyword } = useContext(LocationContext);
 
   const [searchQuery, setSearchQuery] = useState(keyword);
@@ -37,6 +37,8 @@ export const Search = () => {
   return (
     <SearchBarView>
       <Searchbar
+        icon={isFavouriteToggled ? 'heart' : 'heart-outline'}
+        onIconPress={onFavouriteToggled}
         placeholder="Search"
         onChangeText={handleChangeText}
         value={searchQuery}

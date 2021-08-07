@@ -12,7 +12,6 @@ export const RestaurantDetailsScreen = ({ route }) => {
   const [dinnerExpanded, setDinnerExpanded] = useState(false);
   const [drinksExpanded, setDrinksExpanded] = useState(false);
   const { item } = route.params;
-  console.log(item);
 
   return (
     <SafeArea>

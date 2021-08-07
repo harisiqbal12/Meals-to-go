@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { SearchBar } from '../components/search.componenet';
 import { LocationContext } from '../../../services/locations/location.context';
 import { RestaurantsContext } from '../../../services/restaurants/restaurants.context';
-import { MapCallout } from '../components/map-callout.component';
+import { CompactRestaurant } from '../components/compact-restaurant.component';
 
 const Map = styled(MapView)`
   height: 100%;
@@ -18,7 +18,6 @@ export const MapScreen = ({ navigation }) => {
 
   const [latDelta, setLatDetla] = useState(0);
   const { viewport, lat, lng } = location;
-  console.log(viewport.northeast);
 
   useEffect(() => {
     const northeastLat = viewport.northeast.lat;
@@ -55,7 +54,7 @@ export const MapScreen = ({ navigation }) => {
                   })
                 }
               >
-                <MapCallout restaurant={restaurant} />
+                <CompactRestaurant restaurant={restaurant} isMap />
               </MapView.Callout>
             </MapView.Marker>
           );

@@ -3,6 +3,9 @@ import styled from 'styled-components/native';
 import { Card, Paragraph, Title, Avatar } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import { Favourite } from '../../../components/favourites/favourite.componenet';
+import { View } from 'react-native';
+
 export const RestaurantInfoCard = ({ resturant = {} }) => {
   const {
     name = 'Some Resturant',
@@ -18,7 +21,10 @@ export const RestaurantInfoCard = ({ resturant = {} }) => {
   const ratingArray = Array.from(new Array(Math.floor(rating)));
   return (
     <RestaurantCard elevation={5}>
-      <ResutarntCardCover key={name} source={{ uri: photos[0] }} />
+      <View>
+        <Favourite restaurant={resturant} />
+        <ResutarntCardCover key={name} source={{ uri: photos[0] }} />
+      </View>
       <Info>
         <CardTitle>{name}</CardTitle>
         <RatingView>
