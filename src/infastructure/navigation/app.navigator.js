@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeArea } from '../../components/utility/safe-area.component';
 import { Text } from 'react-native';
@@ -29,47 +28,45 @@ const TabNavigator = styled(Tab.Navigator).attrs({
 
 export const Navigators = () => {
   return (
-    <NavigationContainer>
-      <TabNavigator>
-        <Tab.Screen
-          name="Restaurants"
-          component={RestaurantsNavigator}
-          options={{
-            tabBarLabel: 'Restaurants',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="silverware-fork-knife"
-                color={color}
-                size={26}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Maps"
-          component={MapScreen}
-          options={{
-            tabBarLabel: 'Maps',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons
-                name="map-search-outline"
-                color={color}
-                size={26}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Settings"
-          component={Settings}
-          options={{
-            tabBarLabel: 'Settings',
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="cog" color={color} size={26} />
-            ),
-          }}
-        />
-      </TabNavigator>
-    </NavigationContainer>
+    <TabNavigator>
+      <Tab.Screen
+        name="Restaurants"
+        component={RestaurantsNavigator}
+        options={{
+          tabBarLabel: 'Restaurants',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="silverware-fork-knife"
+              color={color}
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Maps"
+        component={MapScreen}
+        options={{
+          tabBarLabel: 'Maps',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons
+              name="map-search-outline"
+              color={color}
+              size={26}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{
+          tabBarLabel: 'Settings',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cog" color={color} size={26} />
+          ),
+        }}
+      />
+    </TabNavigator>
   );
 };
